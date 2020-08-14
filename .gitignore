@@ -1,0 +1,14 @@
+/CMClasses/backup
+/Images/RES Generation
+/TestProyect/lib
+/lib
+/TestProyect/*.log
+Thumbs.db
+/TestProyect/*.exe
+/TestProyect/*.lnk
+/TestProyect/*.connection
+/TestProyect/*.version
+/TestProyect/*.db3
+/TestProyect/backup
+/TestProyect/log
+/backup
