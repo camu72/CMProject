@@ -12,3 +12,10 @@ Thumbs.db
 /TestProyect/backup
 /TestProyect/log
 /backup
+/TestProject/*.log
+/TestProject/backup/*.bak
+/TestProject/lib/x86_64-win64
+/TestProject/*.db3
+/TestProject/*.connection
+/TestProject/*.exe
+/TestProject/*.version

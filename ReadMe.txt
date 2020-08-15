@@ -1,4 +1,4 @@
-CMProyect
+CMProject
 
 An Open Source Lazarus-Mormot framework ready for rich applications.
 
@@ -8,7 +8,7 @@ Contributors
   Claudio Martín
   Arnaud Bouchez - http://blog.synopse.info  
 
-CMProyect is an Open Source proyect for Lazarus, targeting Windows
+CMProject is an Open Source project for Lazarus, targeting Windows
 systems ( looking for contributors for other platforms ) for build ready
 to use desktop applications, in client or clientserver mode. Including a 
 server to be installed as a service when necessary, fully in tune with 
@@ -45,5 +45,5 @@ are based on this component.
 One of the main goals is to just rely on Lazarus, VirtualTreeView and 
 Syopse mORMot framework.
 
-The repository contains a TestProyect folder which shows how to get starting.
+The repository contains a TestProject folder which shows how to get starting.
 
