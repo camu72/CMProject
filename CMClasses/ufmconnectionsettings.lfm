@@ -1,0 +1,174 @@
+object FmConnectionSettings: TFmConnectionSettings
+  Left = 496
+  Height = 252
+  Top = 270
+  Width = 450
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Connection settings'
+  ClientHeight = 252
+  ClientWidth = 450
+  Position = poDesktopCenter
+  LCLVersion = '2.0.8.0'
+  object lbConnectionMode: TLabel
+    Left = 24
+    Height = 15
+    Top = 24
+    Width = 95
+    Caption = 'ConnectionMode'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -12
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object btConnect: TBitBtn
+    Left = 229
+    Height = 30
+    Top = 209
+    Width = 100
+    Anchors = [akRight, akBottom]
+    Caption = 'Connect'
+    OnClick = btConnectClick
+    TabOrder = 7
+  end
+  object btCancel: TBitBtn
+    Left = 337
+    Height = 30
+    Top = 209
+    Width = 100
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Cancel'
+    OnClick = btCancelClick
+    TabOrder = 8
+  end
+  object Label1: TLabel
+    Left = 24
+    Height = 16
+    Top = 59
+    Width = 110
+    AutoSize = False
+    Caption = 'Server ...........................'
+    ParentColor = False
+  end
+  object edServerName: TEdit
+    Left = 139
+    Height = 23
+    Top = 56
+    Width = 282
+    Anchors = [akTop, akLeft, akRight]
+    OnExit = edServerNameExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object edPort: TEdit
+    Left = 139
+    Height = 23
+    Top = 88
+    Width = 282
+    Anchors = [akTop, akLeft, akRight]
+    OnExit = edPortExit
+    TabOrder = 1
+  end
+  object lbPort: TLabel
+    Left = 24
+    Height = 16
+    Top = 91
+    Width = 110
+    AutoSize = False
+    Caption = 'Port ..................................'
+    ParentColor = False
+  end
+  object edDBPath: TEdit
+    Left = 139
+    Height = 23
+    Top = 120
+    Width = 254
+    Anchors = [akTop, akLeft, akRight]
+    OnExit = edDBPathExit
+    TabOrder = 2
+  end
+  object lbDBPath: TLabel
+    Left = 24
+    Height = 16
+    Top = 123
+    Width = 110
+    AutoSize = False
+    Caption = 'DB path ..................................'
+    ParentColor = False
+  end
+  object lbDBName: TLabel
+    Left = 24
+    Height = 16
+    Top = 154
+    Width = 110
+    AutoSize = False
+    Caption = 'DB name ..................................'
+    ParentColor = False
+  end
+  object edDBName: TEdit
+    Left = 139
+    Height = 23
+    Top = 152
+    Width = 254
+    Anchors = [akTop, akLeft, akRight]
+    OnExit = edDBNameExit
+    TabOrder = 4
+  end
+  object btDBPath: TBitBtn
+    Left = 395
+    Height = 27
+    Top = 118
+    Width = 26
+    Anchors = [akTop, akRight]
+    Margin = 2
+    OnClick = btDBPathClick
+    TabOrder = 3
+  end
+  object btNewDB: TBitBtn
+    Left = 123
+    Height = 30
+    Top = 209
+    Width = 100
+    Anchors = [akRight, akBottom]
+    Caption = 'Create DB'
+    Default = True
+    OnClick = btNewDBClick
+    TabOrder = 6
+  end
+  object btDBName: TBitBtn
+    Left = 395
+    Height = 27
+    Top = 150
+    Width = 26
+    Anchors = [akTop, akRight]
+    Margin = 2
+    OnClick = btDBNameClick
+    TabOrder = 5
+  end
+  object lbClientServerHelp: TLabel
+    Left = 172
+    Height = 13
+    Top = 24
+    Width = 248
+    Alignment = taRightJustify
+    Caption = '( for ClientServer mode  lunch with   -cs   param )'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -11
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 345
+    Top = 159
+  end
+end

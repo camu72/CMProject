@@ -1,0 +1,11 @@
+inherited FmTest02: TFmTest02
+  Left = 413
+  Top = 192
+  OnClose = nil
+  object Shape1: TShape[0]
+    Left = 154
+    Height = 136
+    Top = 82
+    Width = 129
+  end
+end

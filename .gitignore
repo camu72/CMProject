@@ -19,3 +19,4 @@ Thumbs.db
 /TestProject/*.connection
 /TestProject/*.exe
 /TestProject/*.version
+/TestProject/log/202008

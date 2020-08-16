@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="TestProject"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+        <TextName Value="Claudio Martín.CMProject.CMProject.CMTestProject"/>
+        <TextDesc Value="Lazarus mORMmot framwork rich applications"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes Count="3">
+      <Item1 Name="Debug Win64" Default="True"/>
+      <Item2 Name="Final Win64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="CMProject64"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir);C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\"/>
+            <Libraries Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\static\x86_64-win64\"/>
+            <OtherUnitFiles Value="..\CMClasses;C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\DDD\infra\"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Final Win32">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="win32"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="CMProject32"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir);C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\"/>
+            <Libraries Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\static\i386-win32\;C:\FPCD2020\fpcLaz02\fpc\bin\i386-win32\"/>
+            <OtherUnitFiles Value="..\CMClasses;C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\DDD\infra\"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item3>
+      <SharedMatrixOptions Count="1">
+        <Item1 ID="857885908403" Modes="Final Win32" Type="IDEMacro" MacroName="LCLWidgetType" Value="win32"/>
+      </SharedMatrixOptions>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0"/>
+    </RunParams>
+    <RequiredPackages Count="3">
+      <Item1>
+        <PackageName Value="virtualtreeview_package"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCLBase"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
+    </RequiredPackages>
+    <Units Count="20">
+      <Unit0>
+        <Filename Value="TestProject.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\CMClasses\ucmform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMForm"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\CMClasses\ucmfunctions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMFunctions"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\CMClasses\ucmvcl.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMVCL"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufmtest01.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmTest01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmTest01"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\CMClasses\ucmvtv.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMVTV"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\CMClasses\ucmsearcherform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMSearcherForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMSearcherForm"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="utestconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UTestConstants"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="..\CMClasses\ucmconfigapp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMConfigApp"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\CMClasses\ucminterfaces.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMInterfaces"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="..\CMClasses\ucmserver.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMServer"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\CMClasses\ucmmodel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMModel"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\CMClasses\ucmmormot.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMMormot"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\CMClasses\ufmconnectionsettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmConnectionSettings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFMConnectionSettings"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\CMClasses\ucmfmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMFmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMFMMain"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="ucmmenuactions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMMenuActions"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="ufmtest02.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmTest02"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmTest02"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="ufmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmMain"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\CMClasses\ucmfmabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMFmAbout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMFMAbout"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\CMClasses\ucmcommons.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMCommons"/>
+      </Unit19>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="CMProject64Deb"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir);C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\"/>
+      <Libraries Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\static\x86_64-win64\"/>
+      <OtherUnitFiles Value="..\CMClasses;C:\FPCD2020\fpcLaz02\ccr\mORMot\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\;C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\DDD\infra\"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

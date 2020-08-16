@@ -1,0 +1,31 @@
+inherited FmMain: TFmMain
+  Left = 229
+  Width = 941
+  ClientWidth = 941
+  OnShow = FormShow
+  inherited pnMenu: TFlowPanel
+    Width = 941
+  end
+  inherited pnPages: TPanel
+    Width = 699
+  end
+  inherited Bevel1: TBevel
+    Width = 941
+  end
+  inherited pnTree: TPanel
+    inherited pgMenu: TPageControl
+      inherited TabMenu: TTabSheet
+        inherited vtvMenu: TVirtualStringTree
+          Color = clInactiveBorder
+          RootNodeCount = 0
+          OnGetHint = vtvMenuGetHint
+        end
+        inherited pnEditMenu: TPanel
+          inherited edMenu: TEdit
+            OnKeyDown = edMenuKeyDown
+          end
+        end
+      end
+    end
+  end
+end

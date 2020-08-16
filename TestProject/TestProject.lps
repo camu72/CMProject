@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Debug Win64"/>
+    <Units Count="49">
+      <Unit0>
+        <Filename Value="TestProject.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="83"/>
+        <CursorPos X="51" Y="98"/>
+        <UsageCount Value="202"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\CMClasses\ucmform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <CursorPos X="45" Y="111"/>
+        <UsageCount Value="204"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\CMClasses\ucmfunctions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMFunctions"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="233"/>
+        <CursorPos X="3" Y="239"/>
+        <UsageCount Value="204"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\CMClasses\ucmvcl.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMVCL"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="118"/>
+        <CursorPos X="5" Y="130"/>
+        <UsageCount Value="204"/>
+        <Bookmarks Count="1">
+          <Item0 X="5" Y="938" ID="9"/>
+        </Bookmarks>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufmtest01.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmTest01"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmTest01"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="156"/>
+        <CursorPos X="10" Y="164"/>
+        <UsageCount Value="217"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\CMClasses\ucmvtv.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMVTV"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="32"/>
+        <CursorPos X="62" Y="45"/>
+        <UsageCount Value="204"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\CMClasses\ucmsearcherform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMSearcherForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMSearcherForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="3" Y="46"/>
+        <UsageCount Value="204"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="utestconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UTestConstants"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="9"/>
+        <UsageCount Value="204"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="..\CMClasses\ucmconfigapp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMConfigApp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="206"/>
+        <CursorPos Y="220"/>
+        <UsageCount Value="204"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\CMClasses\ucminterfaces.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMInterfaces"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="35"/>
+        <CursorPos X="3" Y="48"/>
+        <UsageCount Value="204"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="..\CMClasses\ucmserver.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMServer"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="156"/>
+        <CursorPos Y="165"/>
+        <UsageCount Value="204"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\CMClasses\ucmmodel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMModel"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="42"/>
+        <CursorPos Y="64"/>
+        <UsageCount Value="204"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\CMClasses\ucmmormot.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMMormot"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="74"/>
+        <UsageCount Value="204"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\CMClasses\ufmconnectionsettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmConnectionSettings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFMConnectionSettings"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="187"/>
+        <CursorPos X="38" Y="196"/>
+        <UsageCount Value="204"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\CMClasses\ucmfmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMFmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMFMMain"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="660"/>
+        <CursorPos X="25" Y="664"/>
+        <UsageCount Value="207"/>
+        <Bookmarks Count="3">
+          <Item0 Y="372" ID="7"/>
+          <Item1 X="5" Y="664" ID="6"/>
+          <Item2 Y="605" ID="8"/>
+        </Bookmarks>
+      </Unit14>
+      <Unit15>
+        <Filename Value="ucmmenuactions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMMenuActions"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <CursorPos X="57" Y="90"/>
+        <UsageCount Value="204"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="ufmtest02.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmTest02"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmTest02"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="15"/>
+        <UsageCount Value="207"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="ufmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFmMain"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="47" Y="9"/>
+        <UsageCount Value="202"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\CMClasses\ucmfmabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMFmAbout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMFMAbout"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="96" Y="5"/>
+        <UsageCount Value="202"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\CMClasses\ucmcommons.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UCMCommons"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="57"/>
+        <CursorPos Y="62"/>
+        <UsageCount Value="210"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\Clases\ucmform.pas"/>
+        <ComponentName Value="CMForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="79"/>
+        <CursorPos X="13" Y="89"/>
+        <UsageCount Value="151"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\Clases\ucmfunctions.pas"/>
+        <UnitName Value="UCMFunctions"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="213"/>
+        <CursorPos X="8" Y="266"/>
+        <UsageCount Value="167"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\Clases\ucmvcl.pas"/>
+        <UnitName Value="UCMVCL"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="578"/>
+        <CursorPos X="35" Y="547"/>
+        <UsageCount Value="167"/>
+        <Bookmarks Count="1">
+          <Item0 Y="846" ID="8"/>
+        </Bookmarks>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\Clases\ucmvtv.pas"/>
+        <UnitName Value="UCMVTV"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="420"/>
+        <CursorPos X="43" Y="433"/>
+        <UsageCount Value="189"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\Clases\ucmsearcherform.pas"/>
+        <ComponentName Value="CMSearcherForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMSearcherForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos X="40" Y="42"/>
+        <UsageCount Value="173"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\Clases\ucmsimpletypes.pas"/>
+        <UnitName Value="UCMSimpleTypes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="74"/>
+        <CursorPos X="24" Y="191"/>
+        <UsageCount Value="158"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\Clases\ucmconfigapp.pas"/>
+        <UnitName Value="UCMConfigApp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <CursorPos X="63" Y="76"/>
+        <UsageCount Value="156"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="..\Clases\ucminterfaces.pas"/>
+        <UnitName Value="UCMInterfaces"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="13"/>
+        <UsageCount Value="150"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="..\Clases\ucmserver.pas"/>
+        <UnitName Value="UCMServer"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="209"/>
+        <CursorPos X="35" Y="219"/>
+        <UsageCount Value="153"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\Clases\ucmmodel.pas"/>
+        <UnitName Value="UCMModel"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="11"/>
+        <UsageCount Value="150"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\Clases\ucmmormot.pas"/>
+        <UnitName Value="UCMMormot"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="34" Y="22"/>
+        <UsageCount Value="149"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="..\Clases\ufmconnectionsettings.pas"/>
+        <ComponentName Value="FmConnectionSettings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFMConnectionSettings"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="259"/>
+        <CursorPos X="97" Y="261"/>
+        <UsageCount Value="159"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="..\Clases\umenuactions.pas"/>
+        <UnitName Value="UMenuActions"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="51" Y="7"/>
+        <UsageCount Value="20"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\Clases\ucmclient.pas"/>
+        <UnitName Value="UCMClient"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="17"/>
+        <UsageCount Value="8"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\Clases\ucmconnection.pas"/>
+        <UnitName Value="UCMConnection"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos Y="37"/>
+        <UsageCount Value="128"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\SynCommons.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="42" Y="73"/>
+        <UsageCount Value="59"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\mORMotHttpClient.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="111"/>
+        <CursorPos X="3" Y="124"/>
+        <UsageCount Value="6"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="C:\FPCD2020\fpcLaz02\ccr\mORMot\SQLite3\mORMot.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="32994"/>
+        <CursorPos Y="33007"/>
+        <UsageCount Value="98"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1613"/>
+        <CursorPos X="18" Y="1628"/>
+        <UsageCount Value="100"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3932"/>
+        <CursorPos Y="3945"/>
+        <UsageCount Value="13"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="711"/>
+        <CursorPos X="11" Y="724"/>
+        <UsageCount Value="24"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="C:\FPCD2020\fpcLaz02\ccr\virtualtreeviewonline\Source\VirtualTrees.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3614"/>
+        <CursorPos X="40" Y="3640"/>
+        <UsageCount Value="103"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5400"/>
+        <CursorPos Y="5412"/>
+        <UsageCount Value="25"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\lclrescache.pas"/>
+        <UnitName Value="LCLResCache"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="212"/>
+        <CursorPos Y="225"/>
+        <UsageCount Value="6"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\include\winapih.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="127"/>
+        <CursorPos X="10" Y="149"/>
+        <UsageCount Value="33"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="C:\FPCD2020\fpcLaz02\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="162"/>
+        <CursorPos X="31" Y="174"/>
+        <UsageCount Value="32"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="C:\FPCD2020\fpcLaz02\fpcsrc\packages\fcl-image\src\fpcanvas.pp"/>
+        <UnitName Value="FPCanvas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="367"/>
+        <CursorPos X="15" Y="378"/>
+        <UsageCount Value="10"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="C:\FPCD2020\fpcLaz02\fpcsrc\packages\fcl-image\src\fpimage.pp"/>
+        <UnitName Value="FPImage"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="262"/>
+        <CursorPos X="24" Y="283"/>
+        <UsageCount Value="10"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="C:\FPCD2020\fpcLaz02\fpcsrc\packages\fcl-base\src\contnrs.pp"/>
+        <UnitName Value="Contnrs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="62"/>
+        <CursorPos X="3" Y="74"/>
+        <UsageCount Value="8"/>
+      </Unit48>
+    </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
+    <JumpHistory HistoryIndex="-1"/>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="2" ActiveMode="ClientServer">
+        <Mode0 Name="default"/>
+        <Mode1 Name="ClientServer">
+          <local>
+            <CommandLineParams Value="-cs"/>
+          </local>
+        </Mode1>
+      </Modes>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

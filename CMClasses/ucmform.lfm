@@ -1,0 +1,12 @@
+object CMForm: TCMForm
+  Left = 402
+  Height = 400
+  Top = 272
+  Width = 550
+  Caption = 'CMForm'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poMainFormCenter
+  LCLVersion = '2.0.8.0'
+end

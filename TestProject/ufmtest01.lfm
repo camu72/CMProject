@@ -1,0 +1,264 @@
+inherited FmTest01: TFmTest01
+  Left = 401
+  Height = 490
+  Top = 194
+  Width = 716
+  ClientHeight = 490
+  ClientWidth = 716
+  OnClose = nil
+  object btStandardNotification: TButton[0]
+    Left = 211
+    Height = 25
+    Top = 40
+    Width = 137
+    Caption = 'Standard notification'
+    OnClick = btStandardNotificationClick
+    TabOrder = 1
+  end
+  object TrackBar1: TTrackBar[1]
+    Left = 203
+    Height = 25
+    Top = 10
+    Width = 221
+    Max = 7
+    OnChange = TrackBar1Change
+    PageSize = 1
+    Position = 0
+    TabOrder = 0
+  end
+  object btAdd: TBitBtn[2]
+    Left = 40
+    Height = 30
+    Top = 344
+    Width = 136
+    Caption = 'Add  ORM record'
+    OnClick = btAddClick
+    TabOrder = 10
+  end
+  object btActive: TBitBtn[3]
+    Left = 40
+    Height = 30
+    Top = 408
+    Width = 105
+    Caption = 'ImgActive'
+    TabOrder = 11
+  end
+  object BitBtn1: TBitBtn[4]
+    Left = 40
+    Height = 30
+    Top = 440
+    Width = 105
+    Caption = 'BitBtn1'
+    TabOrder = 13
+  end
+  object BitBtn3: TBitBtn[5]
+    Left = 251
+    Height = 30
+    Top = 440
+    Width = 105
+    Caption = 'BitBtn3'
+    TabOrder = 14
+  end
+  object btInactive: TBitBtn[6]
+    Left = 146
+    Height = 30
+    Top = 408
+    Width = 105
+    Caption = 'ImgInactive'
+    TabOrder = 12
+  end
+  object BitBtn2: TBitBtn[7]
+    Left = 147
+    Height = 30
+    Top = 440
+    Width = 105
+    Caption = 'BitBtn2'
+    TabOrder = 16
+  end
+  object btFinder: TBitBtn[8]
+    AnchorSideRight.Side = asrBottom
+    Left = 40
+    Height = 30
+    Top = 312
+    Width = 136
+    Caption = 'Finder ...'
+    OnClick = btFinderClick
+    TabOrder = 9
+  end
+  object Shape1: TShape[9]
+    Left = 214
+    Height = 30
+    Top = 88
+    Width = 25
+  end
+  object Shape2: TShape[10]
+    Left = 238
+    Height = 30
+    Top = 88
+    Width = 25
+  end
+  object Shape3: TShape[11]
+    Left = 262
+    Height = 30
+    Top = 88
+    Width = 25
+  end
+  object Shape4: TShape[12]
+    Left = 286
+    Height = 30
+    Top = 88
+    Width = 25
+  end
+  object Shape5: TShape[13]
+    Left = 310
+    Height = 30
+    Top = 88
+    Width = 25
+  end
+  object btColorTest: TBitBtn[14]
+    AnchorSideRight.Side = asrBottom
+    Left = 19
+    Height = 30
+    Top = 88
+    Width = 136
+    Caption = 'Color test'
+    OnClick = btColorTestClick
+    TabOrder = 2
+  end
+  object Label1: TLabel[15]
+    Left = 19
+    Height = 15
+    Top = 12
+    Width = 130
+    Caption = 'Notification window test'
+    ParentColor = False
+  end
+  object btSum: TButton[16]
+    Left = 147
+    Height = 30
+    Top = 161
+    Width = 102
+    Caption = 'Sum'
+    OnClick = btSumClick
+    TabOrder = 5
+  end
+  object Label2: TLabel[17]
+    Left = 19
+    Height = 15
+    Top = 145
+    Width = 142
+    Caption = 'Method based services test'
+    ParentColor = False
+  end
+  object edNumber1: TEdit[18]
+    Left = 40
+    Height = 23
+    Top = 165
+    Width = 40
+    Alignment = taRightJustify
+    OnKeyPress = edNumber1KeyPress
+    TabOrder = 3
+    Text = '10'
+  end
+  object edNumber2: TEdit[19]
+    Left = 100
+    Height = 23
+    Top = 165
+    Width = 40
+    Alignment = taRightJustify
+    OnKeyPress = edNumber1KeyPress
+    TabOrder = 4
+    Text = '25'
+  end
+  object Label3: TLabel[20]
+    Left = 82
+    Height = 15
+    Top = 169
+    Width = 14
+    Caption = ' + '
+    ParentColor = False
+  end
+  object edResult: TEdit[21]
+    Left = 256
+    Height = 23
+    Top = 165
+    Width = 48
+    Alignment = taRightJustify
+    Enabled = False
+    OnKeyPress = edNumber1KeyPress
+    TabOrder = 6
+  end
+  object btGetFile: TBitBtn[22]
+    Left = 256
+    Height = 30
+    Top = 204
+    Width = 240
+    Caption = '<< Get this file from server and save as ...'
+    OnClick = btGetFileClick
+    TabOrder = 8
+  end
+  object lbFilesToTransfer: TListBox[23]
+    Left = 40
+    Height = 77
+    Top = 204
+    Width = 209
+    ItemHeight = 0
+    TabOrder = 7
+  end
+  object btDisable: TBitBtn[24]
+    Left = 251
+    Height = 30
+    Top = 408
+    Width = 105
+    Caption = 'ButtonDisable'
+    Enabled = False
+    TabOrder = 15
+  end
+  object Label4: TLabel[25]
+    Left = 19
+    Height = 15
+    Top = 389
+    Width = 94
+    Caption = 'Image setting test'
+    ParentColor = False
+  end
+  object Label5: TLabel[26]
+    Left = 19
+    Height = 15
+    Top = 292
+    Width = 68
+    Caption = 'Serveral tests'
+    ParentColor = False
+  end
+  object ColorDialog1: TColorDialog[27]
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 171
+    Top = 88
+  end
+  object OpenDialog1: TOpenDialog[28]
+    Left = 504
+    Top = 204
+  end
+end

@@ -1,0 +1,280 @@
+inherited CMFmMain: TCMFmMain
+  Left = 267
+  Height = 611
+  Top = 37
+  Width = 853
+  Caption = 'Main form'
+  ClientHeight = 611
+  ClientWidth = 853
+  DefaultMonitor = dmDesktop
+  OnClose = nil
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  object pnMenu: TFlowPanel[0]
+    Left = 0
+    Height = 41
+    Top = 0
+    Width = 853
+    Align = alTop
+    BevelOuter = bvNone
+    BorderWidth = 1
+    Color = clBtnFace
+    ControlList = <    
+      item
+        Control = btInfo
+        WrapAfter = waAuto
+        Index = 0
+      end    
+      item
+        Control = Separador1
+        WrapAfter = waAuto
+        Index = 1
+      end    
+      item
+        Control = btExit
+        WrapAfter = waAuto
+        Index = 2
+      end    
+      item
+        Control = Separador2
+        WrapAfter = waAuto
+        Index = 3
+      end    
+      item
+        Control = pnInfoApp
+        WrapAfter = waAuto
+        Index = 4
+      end    
+      item
+        Control = ImgPanelButtons
+        WrapAfter = waAuto
+        Index = 5
+      end>
+    FlowLayout = tlTop
+    FlowStyle = fsLeftRightTopBottom
+    ParentColor = False
+    TabOrder = 0
+    OnResize = pnMenuResize
+    object btInfo: TSpeedButton
+      Left = 1
+      Height = 38
+      Top = 1
+      Width = 38
+      Anchors = []
+      Flat = True
+      OnClick = btInfoClick
+    end
+    object btExit: TSpeedButton
+      Left = 48
+      Height = 38
+      Hint = 'Salir del sistema'
+      Top = 1
+      Width = 38
+      Anchors = []
+      Flat = True
+      OnClick = btExitClick
+    end
+    object Separador1: TPanel
+      Left = 39
+      Height = 38
+      Top = 1
+      Width = 9
+      Anchors = []
+      BevelOuter = bvNone
+      ClientHeight = 38
+      ClientWidth = 9
+      TabOrder = 0
+      object Bevel2: TBevel
+        Left = 4
+        Height = 38
+        Top = 0
+        Width = 2
+        Anchors = []
+        Shape = bsLeftLine
+      end
+    end
+    object Separador2: TPanel
+      Left = 86
+      Height = 38
+      Top = 1
+      Width = 9
+      Anchors = []
+      BevelOuter = bvNone
+      ClientHeight = 38
+      ClientWidth = 9
+      TabOrder = 1
+      object Bevel3: TBevel
+        Left = 4
+        Height = 38
+        Top = 0
+        Width = 2
+        Anchors = []
+        Shape = bsLeftLine
+      end
+    end
+    object pnInfoApp: TPanel
+      Left = 95
+      Height = 38
+      Top = 1
+      Width = 181
+      Anchors = []
+      BevelOuter = bvNone
+      ClientHeight = 38
+      ClientWidth = 181
+      TabOrder = 2
+      object lbAppMode: TLabel
+        Left = 0
+        Height = 15
+        Top = 2
+        Width = 175
+        AutoSize = False
+        Caption = 'Mode: Client Server'
+        Font.Height = -11
+        ParentColor = False
+        ParentFont = False
+      end
+      object lbAuxAppMode: TLabel
+        Left = 0
+        Height = 14
+        Top = 21
+        Width = 175
+        AutoSize = False
+        Caption = 'Server:Port'
+        Font.Height = -11
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+    object ImgPanelButtons: TImage
+      Left = 276
+      Height = 40
+      Top = 1
+      Width = 124
+      Anchors = []
+    end
+  end
+  object pnPages: TPanel[1]
+    Left = 242
+    Height = 568
+    Top = 43
+    Width = 611
+    Align = alClient
+    BevelOuter = bvNone
+    ParentColor = False
+    TabOrder = 1
+  end
+  object Bevel1: TBevel[2]
+    Left = 0
+    Height = 2
+    Top = 41
+    Width = 853
+    Align = alTop
+    Shape = bsTopLine
+  end
+  object pnTree: TPanel[3]
+    Left = 0
+    Height = 568
+    Top = 43
+    Width = 237
+    Align = alLeft
+    BevelOuter = bvNone
+    ClientHeight = 568
+    ClientWidth = 237
+    TabOrder = 2
+    object pgMenu: TPageControl
+      Left = 0
+      Height = 568
+      Top = 0
+      Width = 237
+      ActivePage = TabMenu
+      Align = alClient
+      TabHeight = 23
+      TabIndex = 0
+      TabOrder = 0
+      TabWidth = 80
+      object TabMenu: TTabSheet
+        Caption = 'Menu'
+        ClientHeight = 537
+        ClientWidth = 229
+        object vtvMenu: TVirtualStringTree
+          Left = 2
+          Height = 502
+          Top = 33
+          Width = 225
+          Align = alClient
+          BorderSpacing.Around = 2
+          BorderStyle = bsNone
+          ButtonFillMode = fmTransparent
+          Colors.UnfocusedSelectionColor = clHighlight
+          Colors.UnfocusedSelectionBorderColor = clHighlight
+          DefaultNodeHeight = 21
+          DefaultText = 'Node'
+          DragImageKind = diMainColumnOnly
+          DragMode = dmAutomatic
+          Header.AutoSizeIndex = 0
+          Header.Columns = <          
+            item
+              Options = [coAllowClick, coDraggable, coEnabled, coParentBidiMode, coParentColor, coResizable, coShowDropMark, coVisible, coSmartResize, coAllowFocus, coEditable]
+              Position = 0
+              Width = 201
+            end          
+            item
+              Position = 1
+              Width = 24
+            end>
+          Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoShowSortGlyphs]
+          HintMode = hmHint
+          Images = ImgMenuTree
+          Margin = 2
+          RootNodeCount = 2
+          TabOrder = 0
+          TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowRoot, toThemeAware, toUseBlendedImages]
+          TreeOptions.SelectionOptions = [toFullRowSelect]
+          OnBeforeItemErase = vtvMenuBeforeItemErase
+          OnDblClick = vtvMenuDblClick
+          OnFreeNode = vtvMenuFreeNode
+          OnGetText = vtvMenuGetText
+          OnPaintText = vtvMenuPaintText
+          OnGetImageIndex = vtvMenuGetImageIndex
+          OnGetHint = vtvMenuGetHint
+          OnInitNode = vtvMenuInitNode
+          OnKeyDown = vtvMenuKeyDown
+        end
+        object pnEditMenu: TPanel
+          Left = 0
+          Height = 31
+          Top = 0
+          Width = 229
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 31
+          ClientWidth = 229
+          TabOrder = 1
+          object edMenu: TEdit
+            Left = 1
+            Height = 23
+            Top = 4
+            Width = 225
+            Anchors = [akTop, akLeft, akRight]
+            OnChange = edMenuChange
+            OnKeyDown = edMenuKeyDown
+            TabOrder = 0
+          end
+        end
+      end
+    end
+  end
+  object Splitter1: TSplitter[4]
+    Left = 237
+    Height = 568
+    Top = 43
+    Width = 5
+    ResizeStyle = rsPattern
+  end
+  object ImgMenuTree: TImageList[5]
+    Left = 105
+    Top = 213
+  end
+end
