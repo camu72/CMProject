@@ -12,7 +12,7 @@ CMProject is an Open Source project for Lazarus, targeting Windows
 systems ( looking for contributors for other platforms ) for build ready
 to use desktop applications, in client or clientserver mode. Including a 
 server to be installed as a service when necessary, fully in tune with 
-Synopse mORMt framework.
+Synopse mORMot framework.
 
 The proposal is to have a project template, which allows generating an 
 "tabbed interface" application with a main screen, with a top bar for main 
@@ -33,7 +33,6 @@ tabs or modal mode, according to the needs.
 |   Menu2.3       |                                          |
 |                 |                                          |
 |                 |                                          |
-
 |                 |                                          |
 |                 |                                          |
 |                 |                                          |
