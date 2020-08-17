@@ -2,10 +2,10 @@ CMProject
 
 An Open Source Lazarus-Mormot framework ready for rich applications.
 
-(c) 2020 Claudio Martín
+(c) 2020 Claudio MartÃ­n
 
 Contributors
-  Claudio Martín
+  Claudio MartÃ­n
   Arnaud Bouchez - http://blog.synopse.info  
 
 CMProject is an Open Source project for Lazarus, targeting Windows
@@ -20,10 +20,10 @@ actions, and a vertical menu in tree, that lunches subsecuents screens in
 tabs or modal mode, according to the needs.
 
  ------------------------------------------------------------
-| Btn1 | Btn2 | .........| Btn Exit |     			Info.... |
+| Btn1 | Btn2 | .........| Btn Exit |               Info.... |
  ------------------------------------------------------------|
 | Menu finder     |/  Manin  \/ Menu1.1 x \/ Menu2.1 x \     |
------------------- -----------           --------------------|
+------------------ ------------------------------------------|
 | Mod Menu 1      |                                          |
 |   Menu1.1       |                                          |
 |   Menu1.2       |                                          |
