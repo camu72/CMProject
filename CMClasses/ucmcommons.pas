@@ -72,7 +72,7 @@ type
     TImgBuscar12, TImgAgregar12, TImgEditar12, TImgEliminar12, TImgHistorial12,
     TImgBuscar16, TImgAgregar16, TImgEditar16, TImgEliminar16, TImgActualizar16,
     TImgAceptar16, TImgCancelar16,
-    TImgCerrar16, TImgCerrar32,
+    TImgCerrar16, TImgCerrar32, TImgMenu32,
     TImgAdmin16, TImgAdminReportes16,
     TImgEmail16, TImgColumnas16, TImgColumnasConfig16, TImgExcel16,
     TImgHabilitar16,  TImgPagado16,

@@ -85,6 +85,41 @@ type
     //function ConjSQLUnitario(vElementoEnumerado: integer): RawUTF8;
   end;
 
+  { TSQLMenu }
+
+  TSQLMenu = class(TSQLRecord)
+  private
+    FDescription: RawUTF8;
+    FIdImage: TID;
+    FIdMenu: TID;
+    FIdParent: TID;
+    FImputable: boolean;
+    FLongText: RawUTF8;
+    FNumericPath: RawUTF8;
+    FShortText: RawUTF8;
+    FShowFormMode: TShowFormMode;
+  published
+    property IdMenu: TID read FIdMenu write FIdMenu;
+    property IdParent: TID read FIdParent write FIdParent;
+    property LongText: RawUTF8 read FLongText write FLongText;
+    property ShortText: RawUTF8 read FShortText write FShortText;
+    property Imputable: boolean read FImputable write FImputable;
+    property NumericPath: RawUTF8 read FNumericPath write FNumericPath;
+    property ShowFormMode: TShowFormMode read FShowFormMode write FShowFormMode;
+    property Description: RawUTF8 read FDescription write FDescription;
+    property IdImage: TID read FIdImage write FIdImage;
+  end;
+
+
+  //{ TSynFilterNumericPath }
+  //
+  //TSynFilterNumericPath = class(TSynValidateRest)
+  //protected
+  //  /// perform the unique field validation action to the specified value
+  //  function DoValidate(aFieldIndex: integer; const Value: RawUTF8; var ErrorMsg:
+  //     string; aProcessRest: TSQLRest; aProcessRec: TSQLRecord): boolean; override;
+  //end;
+
 
   { TSQLHttpClientCM }
   TSQLHttpClientCM = class(TSQLHttpClientWinHTTP)
@@ -93,10 +128,45 @@ type
   public
     //SQLRemote: ISQLRemote;
     TransferFileService: ITransferFileService;
+    MenuServices: IMenuServices;
   end;
 
 
 implementation
+
+{ TSynFilterNumericPath }
+
+//function TSynFilterNumericPath.DoValidate(aFieldIndex: integer;
+//  const Value: RawUTF8; var ErrorMsg: string; aProcessRest: TSQLRest;
+//  aProcessRec: TSQLRecord): boolean;
+//begin
+//  result := false;
+//  if (self=nil) or (ProcessField=nil) or (aProcessRest=nil)
+//     or (aProcessRec=nil)
+//     then exit;
+//
+//  it aProcessRec is TSQLMenu then
+//    if TSQLMenu(aProcessRec).IdParent = 0 then
+//      Field
+//
+//  if not (tfoIndex in ProcessField.Options) then
+//    exit; // index should be always created by TSynTable.AfterFieldModif
+//  S := ProcessField.SBFFromRawUTF8(Value);
+//  if S='' then
+//    exit; // void field can't be unique
+//  if ProcessField.OrderedIndexFindAdd(Pointer(S))>=0 then
+//    // there is some place to insert the Value -> not existing yet -> OK
+//    result := true else begin
+//    // RecordIndex=-1 in case of adding, or the physical index of the updated record
+//    if (ProcessRecordIndex>=0) and
+//       (ProcessField.OrderedIndex[ProcessField.OrderedIndexFind(Pointer(S))]=
+//         ProcessRecordIndex) then
+//      // allow update of the record
+//      result := true else
+//      // found a dupplicated value
+//      ErrorMsg := sValidationFieldDuplicate;
+//  end;
+//end;
 
 { TCMEnumType }
 

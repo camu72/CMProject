@@ -1,10 +1,10 @@
 inherited CMFmMain: TCMFmMain
-  Left = 267
-  Height = 611
-  Top = 37
+  Left = 372
+  Height = 538
+  Top = 232
   Width = 853
   Caption = 'Main form'
-  ClientHeight = 611
+  ClientHeight = 538
   ClientWidth = 853
   DefaultMonitor = dmDesktop
   OnClose = nil
@@ -23,34 +23,39 @@ inherited CMFmMain: TCMFmMain
     Color = clBtnFace
     ControlList = <    
       item
-        Control = btInfo
+        Control = btMenu
         WrapAfter = waAuto
         Index = 0
       end    
       item
-        Control = Separador1
+        Control = btInfo
         WrapAfter = waAuto
         Index = 1
       end    
       item
-        Control = btExit
+        Control = Separador1
         WrapAfter = waAuto
         Index = 2
       end    
       item
-        Control = Separador2
+        Control = btExit
         WrapAfter = waAuto
         Index = 3
       end    
       item
-        Control = pnInfoApp
+        Control = Separador2
         WrapAfter = waAuto
         Index = 4
       end    
       item
-        Control = ImgPanelButtons
+        Control = pnInfoApp
         WrapAfter = waAuto
         Index = 5
+      end    
+      item
+        Control = ImgPanelButtons
+        WrapAfter = waAuto
+        Index = 6
       end>
     FlowLayout = tlTop
     FlowStyle = fsLeftRightTopBottom
@@ -58,7 +63,7 @@ inherited CMFmMain: TCMFmMain
     TabOrder = 0
     OnResize = pnMenuResize
     object btInfo: TSpeedButton
-      Left = 1
+      Left = 39
       Height = 38
       Top = 1
       Width = 38
@@ -67,7 +72,7 @@ inherited CMFmMain: TCMFmMain
       OnClick = btInfoClick
     end
     object btExit: TSpeedButton
-      Left = 48
+      Left = 86
       Height = 38
       Hint = 'Salir del sistema'
       Top = 1
@@ -77,7 +82,7 @@ inherited CMFmMain: TCMFmMain
       OnClick = btExitClick
     end
     object Separador1: TPanel
-      Left = 39
+      Left = 77
       Height = 38
       Top = 1
       Width = 9
@@ -96,7 +101,7 @@ inherited CMFmMain: TCMFmMain
       end
     end
     object Separador2: TPanel
-      Left = 86
+      Left = 124
       Height = 38
       Top = 1
       Width = 9
@@ -115,7 +120,7 @@ inherited CMFmMain: TCMFmMain
       end
     end
     object pnInfoApp: TPanel
-      Left = 95
+      Left = 133
       Height = 38
       Top = 1
       Width = 181
@@ -148,16 +153,25 @@ inherited CMFmMain: TCMFmMain
       end
     end
     object ImgPanelButtons: TImage
-      Left = 276
+      Left = 314
       Height = 40
       Top = 1
       Width = 124
       Anchors = []
     end
+    object btMenu: TSpeedButton
+      Left = 1
+      Height = 38
+      Top = 1
+      Width = 38
+      Anchors = []
+      Flat = True
+      OnClick = btMenuClick
+    end
   end
   object pnPages: TPanel[1]
     Left = 242
-    Height = 568
+    Height = 495
     Top = 43
     Width = 611
     Align = alClient
@@ -175,17 +189,17 @@ inherited CMFmMain: TCMFmMain
   end
   object pnTree: TPanel[3]
     Left = 0
-    Height = 568
+    Height = 495
     Top = 43
     Width = 237
     Align = alLeft
     BevelOuter = bvNone
-    ClientHeight = 568
+    ClientHeight = 495
     ClientWidth = 237
     TabOrder = 2
     object pgMenu: TPageControl
       Left = 0
-      Height = 568
+      Height = 495
       Top = 0
       Width = 237
       ActivePage = TabMenu
@@ -196,11 +210,11 @@ inherited CMFmMain: TCMFmMain
       TabWidth = 80
       object TabMenu: TTabSheet
         Caption = 'Menu'
-        ClientHeight = 537
+        ClientHeight = 464
         ClientWidth = 229
         object vtvMenu: TVirtualStringTree
           Left = 2
-          Height = 502
+          Height = 429
           Top = 33
           Width = 225
           Align = alClient
@@ -255,20 +269,23 @@ inherited CMFmMain: TCMFmMain
           object edMenu: TEdit
             Left = 1
             Height = 23
+            Hint = 'Write some terms and '#13#10'then press KeyUp, KeyDown, Enter or Escape'
             Top = 4
             Width = 225
             Anchors = [akTop, akLeft, akRight]
             OnChange = edMenuChange
             OnKeyDown = edMenuKeyDown
+            ParentShowHint = False
+            ShowHint = True
             TabOrder = 0
           end
         end
       end
     end
   end
-  object Splitter1: TSplitter[4]
+  object splitterMenu: TSplitter[4]
     Left = 237
-    Height = 568
+    Height = 495
     Top = 43
     Width = 5
     ResizeStyle = rsPattern

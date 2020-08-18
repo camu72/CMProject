@@ -77,7 +77,6 @@ type
     IMPUTABLE: boolean;
     NUMERIC_PATH: string[50];
     LEVEL: integer;
-    CHILD_COUNT: integer;
     SHOW_FORM_MODE: TShowFormMode;
     DESCRIPTION: string[200];
     CLASS_NAME: string[50];

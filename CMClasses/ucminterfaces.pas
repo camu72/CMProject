@@ -78,6 +78,11 @@ type
     function ListFilesAvailables(out msg: rawUTF8): TFileNameDynArray;
   end;
 
+  IMenuServices = interface(IInvokable)
+    ['{6C832F3C-112D-4697-9E3C-7DB7727789A6}']
+    procedure RebuildNumericPathInMenus;
+  end;
+
   { TDTOSearcherReg }
 
   TDTOSearcherReg = class(TSynPersistent)
@@ -152,6 +157,7 @@ initialization
   { This is for direct using of variables, ie, use ISQLRemoto and not TypeInfo(ISQLRemoto) }
   //TInterfaceFactory.RegisterInterfaces([TypeInfo(ISQLRemote)]);
   TInterfaceFactory.RegisterInterfaces([TypeInfo(ITransferFileService)]);
+  TInterfaceFactory.RegisterInterfaces([TypeInfo(IMenuServices)]);
 
   { Comentar desde aquí para compilar Lanzador }
   //TInterfaceFactory.RegisterInterfaces([TypeInfo(IServicePeriodos)]);

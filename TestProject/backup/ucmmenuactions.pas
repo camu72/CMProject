@@ -5,34 +5,68 @@ unit UCMMenuActions;
 interface
 
 uses
-  SynCommons, mORMot,
+  SynCommons, mORMot, UCMMormot,
   UCMConfigApp, UCMCommons, UCMModel, UCMForm,
   UFmTest01, UFmTest02;
 
-const
-  { Menu Configuración general }
-  IdMenuTest01InTab                              = 101;
-  IdMenuTest01Modal                              = 102;
-  IdMenuTest02InTab                              = 103;
-
-function SelectClassToProcess(pIdMenu: integer): TCMFormClass;
+function SelectClassToProcess(pIdMenu: integer; pMenuList: TSynDictionary): TCMFormClass;
 procedure FillMissingMenuEntries(var pMenuList: TSynDictionary);
 
 implementation
 
-function SelectClassToProcess(pIdMenu: integer): TCMFormClass;
+function SelectClassToProcess(pIdMenu: integer; pMenuList: TSynDictionary): TCMFormClass;
 begin
   result := nil;
-  Case pIdMenu of
-    IdMenuTest01InTab                   : result := TFmTest01;
-    IdMenuTest01Modal                   : result := TFmTest01;
-    IdMenuTest02InTab                   : result := TFmTest02;
-  end;
+  pMenuList.FindAndCopy(pIdMenu,result);
+  result := TCMFormClass(result);
 end;
 
 procedure FillMissingMenuEntries(var pMenuList: TSynDictionary);
-var
-  SQLMenu: TSQLMenu;
+
+  procedure AddOrUpdateSQLMenu(pIdMenu, pIdParent, pIdImage: Integer;
+    pLongText, pShortText, pDescription: RawUTF8; pImputable: boolean;
+    pShowFormMode: TShowFormMode);
+  var
+    vSQLMenu: TSQLMenu;
+  begin
+
+    vSQLMenu := TSQLMenu.Create(ConfigApp.CMClient,'IdMenu = ?',[pIdMenu]);
+    try
+      with vSQLMenu do
+      begin
+        IdMenu := pIdMenu;
+        IdParent := pIdParent;
+        LongText := pLongText;
+        ShortText := pShortText;
+        Imputable := pImputable;
+        ShowFormMode := pShowFormMode;
+        Description := pDescription;
+        pIdImage := pIdImage;
+      end;
+
+      { If not exist, then Add else Update }
+      if vSQLMenu.ID = 0 then
+        ConfigApp.CMClient.Add(vSQLMenu, True)
+      else
+        ConfigApp.CMClient.Update(vSQLMenu);
+
+    finally
+      vSQLMenu.Free;
+    end;
+  end;
+
+  procedure AddOrUpdateMenuCategEntry(
+    pIdMenu: Integer;
+    pIdParent: Integer;
+    pLongText: RawUTF8;
+    pIdImage: TID);
+  var
+    vFormClass: TCMFormClass;
+  begin
+    vFormClass := nil;
+    pMenuList.Add(pIdMenu, vFormClass);
+    AddOrUpdateSQLMenu(pIdMenu,pIdParent,pIdImage,pLongText,'','',False,sfmNotShow);
+  end;
 
   procedure AddOrUpdateMenuEntry(
     pFormClass: TCMFormClass;
@@ -40,59 +74,23 @@ var
     pIdParent: Integer;
     pLongText: RawUTF8;
     pShortText: RawUTF8;
-    pImputable: boolean;
-    //pNumericPath: RawUTF8;
-    //TextPath: RawUTF8;
-    //Level: Integer;
-    //ChildCount: Integer;
     pShowFormMode: TShowFormMode;
     pDescription: RawUTF8;
     pIdImage: TID);
-  var
-    vSQLMenu: TSQLMenu;
   begin
     pMenuList.Add(pIdMenu, pFormClass);
-
-
-    vSQLMenu := TSQLMenu.Create(ConfigApp.CMClient,'IdMenu = ?',[pIdMenu]);
-    try
-
-      if vSQLMenu.ID = 0 then
-      begin
-        with vSQLMenu do
-        begin
-          IdMenu := pIdMenu;
-          IdParent := pIdParent;
-          LongText := pLongText;
-          ShortText := pShortText;
-          Imputable := pImputable;
-          ShowFormMode := pShowFormMode;
-          Description := pDescription;
-          pIdImage := IdImage;
-
-          NumericPath := '';
-          TextPath := '';
-          ChildCount := 0;
-        end;
-        ConfigApp.CMClient.Add(vSQLMenu, True);
-      end;
-    finally
-
-      vSQLMenu.Free;
-    end;
+    AddOrUpdateSQLMenu(pIdMenu,pIdParent,pIdImage,pLongText,pShortText,pDescription,True,pShowFormMode);
   end;
 
 begin
-  SQLMenu := TSQLMenu.Create;
+  AddOrUpdateMenuCategEntry(100,0,'Initial menu test',0);
+  AddOrUpdateMenuEntry(101, IdMenuTest01InTab,100,'TestForm 01 in tab','Test 01', sfmShowInTab,'',0);
+  AddOrUpdateMenuEntry(102, IdMenuTest01Modal,100,'TestForm 01 modal','Test 01', sfmShowModal,'',0);
+  AddOrUpdateMenuEntry(103, IdMenuTest02InTab,100,'TestForm 02 in tab','Test 02', sfmShowInTab,'',0);
 
-  try
-    AddOrUpdateMenuEntry(nil, 100,0,'Test menu','Test', False, sfmNotShow,'',0);
-    AddOrUpdateMenuEntry(TFmTest01, IdMenuTest01InTab,0,'TestForm 01','Test 01', True, sfmShowInTab,'',0);
-    AddOrUpdateMenuEntry(TFmTest01, IdMenuTest01Modal,100,'TestForm 01','Test 01', True, sfmShowModal,'',0);
-    AddOrUpdateMenuEntry(TFmTest02, IdMenuTest02InTab,100,'TestForm 02','Test 02', True, sfmShowInTab,'',0);
-  finally
-    SQLMenu.Free;
-  end;
+  AddOrUpdateMenuCategEntry(200,0,'Second menu test',0);
+  AddOrUpdateMenuCategEntry(210,200,'Submenu test',0);
+  AddOrUpdateMenuEntry(TFmTest02, 211,210,'TestForm 02 modal','Test 02', sfmShowModal,'',0);
 end;
 
 end.

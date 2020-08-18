@@ -42,8 +42,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  ComCtrls, StdCtrls,
-  SynCommons, VirtualTrees, UCMMenuActions, UCMModel, UCMFunctions,
+  ComCtrls, StdCtrls, Menus,
+  SynCommons, VirtualTrees, UCMMenuActions, UCMModel, UCMFunctions, UCMMormot,
   UCMForm, UCMConfigApp, UCMCommons, UCMVCL, UCMVTV, UCMFMAbout;
 type
 
@@ -55,6 +55,7 @@ type
     Bevel3: TBevel;
     btInfo: TSpeedButton;
     btExit: TSpeedButton;
+    btMenu: TSpeedButton;
     edMenu: TEdit;
     ImgPanelButtons: TImage;
     ImgMenuTree: TImageList;
@@ -68,9 +69,10 @@ type
     pnPages: TPanel;
     Separador1: TPanel;
     Separador2: TPanel;
-    Splitter1: TSplitter;
+    splitterMenu: TSplitter;
     TabMenu: TTabSheet;
     vtvMenu: TVirtualStringTree;
+    procedure btMenuClick(Sender: TObject);
     procedure OnRestoreApplication(Sender: TObject);
     procedure btExitClick(Sender: TObject);
     procedure btInfoClick(Sender: TObject);
@@ -114,7 +116,8 @@ type
     procedure EndingDestroy(Sender: TObject); override;
     procedure ProcessingCreate(Sender: TObject); override;
     procedure GetNewMenuRecord(var MenuData: PvtvMenuRecord; pIdMenu: integer);
-    procedure FillMenuData(var pMenuData: PvtvMenuRecord; pSQLMenu: TSQLMenu);
+    procedure FillMenuData(var pMenuData: PvtvMenuRecord;
+      pSQLMenu: TSQLMenu; pParentNode: PVirtualNode = nil);
     procedure FillMenuTree; virtual;
     procedure FillMissingMenuEntries(var pMenuList: TSynDictionary);
     procedure EndingShow(Sender: TObject); override;
@@ -152,7 +155,7 @@ procedure TCMFmMain.edMenuKeyDown(Sender: TObject; var Key: Word;
 var
   MenuData: PvtvMenuRecord;
 begin
-  if Key <> 27 then
+  if Key <> 27 {VK_ESCAPE}then
   begin
     KeyPreview := True;
     if (Key = 40) then
@@ -170,7 +173,7 @@ begin
     else if (key = 13 {VK_RETURN} ) then
     begin
       key := 0;
-      if assigned(vtvMenu.FocusedNode) then
+      if assigned(vtvMenu.FocusedNode) and (vtvMenu.FullyVisible[vtvMenu.FocusedNode]) then
       begin
         MenuData := vtvMenu.GetNodeData(vtvMenu.FocusedNode);
         ExecuteMenuAction(MenuData, nil);
@@ -238,11 +241,13 @@ begin
   MenuData := vtvMenu.GetNodeData(Node);
 
   if MenuData^.IMPUTABLE then
-    ItemColor := ConfigApp.Color03
+    ItemColor := ConfigApp.Color04
   else if MenuData^.LEVEL = 0 then
      ItemColor := ConfigApp.Color01
+  else if MenuData^.LEVEL = 1 then
+     ItemColor := ConfigApp.Color02
   else if MenuData^.LEVEL = 2 then
-     ItemColor := ConfigApp.Color02;
+     ItemColor := ConfigApp.Color03;
 
   inherited;
 end;
@@ -368,7 +373,7 @@ var
 begin
   inherited;
   MenuData := Sender.GetNodeData(Node);
-  FillMenuData(MenuData, SQLMenu);
+  FillMenuData(MenuData, SQLMenu, ParentNode);
 end;
 
 procedure TCMFmMain.vtvMenuKeyDown(Sender: TObject; var Key: Word;
@@ -413,7 +418,7 @@ var
   TClassToProcess: TCMFormClass;
 begin
   try { At "finally", release if pFormInitParam exist }
-    TClassToProcess := SelectClassToProcess(pMenuRecord^.ID_MENU);
+    TClassToProcess := SelectClassToProcess(pMenuRecord^.ID_MENU, MenuList);
     if not Assigned(TClassToProcess) then
     begin
       showmessage('Class not confugured for ' + pMenuRecord^.SHORT_TEXT);
@@ -513,7 +518,7 @@ var
   TClassToProcess: TCMFormClass;
 begin
   try { At "finally", release if pFormInitParam exist }
-    TClassToProcess := SelectClassToProcess(pMenuRecord^.ID_MENU);
+    TClassToProcess := SelectClassToProcess(pMenuRecord^.ID_MENU, MenuList);
     if not Assigned(TClassToProcess) then
     begin
       showmessage('Class not confugured for ' + pMenuRecord^.SHORT_TEXT);
@@ -570,6 +575,7 @@ end;
 procedure TCMFmMain.AssignImages;
 begin
   inherited AssignImages;
+  btMenu.Glyph := ConfigApp.GetCMImage(TImgMenu32);
   btExit.Glyph := ConfigApp.GetCMImage(TImgCerrar32);
   btInfo.Glyph := ConfigApp.GetCMImage(TImgInformacion32);
 end;
@@ -586,6 +592,8 @@ end;
 procedure TCMFmMain.ProcessingCreate(Sender: TObject);
 begin
   inherited ProcessingCreate(Sender);
+
+  //btMenu.Width := 60;
 
   { Define the size and position of the MainForm, in case you leave de
   maximized option...}
@@ -639,7 +647,7 @@ begin
   EditMenu.AutomaticEvent := True;
   EditMenu.TimeBetweenAutomaticEvents := 50;
 
-  vtvMenu.Color := ConfigApp.Color03;
+  vtvMenu.Color := ConfigApp.Color04;
   vtvMenu.NodeDataSize := SizeOf(TvtvMenuRecord);
   vtvMenu.RootNodeCount := 0;
 end;
@@ -651,14 +659,16 @@ begin
   New(MenuData);
   vSQLMenu := TSQLMenu.Create(Client,'IdMenu = ?',[pIdMenu]);
   try
-    FillMenuData(MenuData, vSQLMenu );
+    FillMenuData(MenuData, vSQLMenu);
   finally
     vSQLMenu.Free;
   end;
 end;
 
 procedure TCMFmMain.FillMenuData(var pMenuData: PvtvMenuRecord;
-  pSQLMenu: TSQLMenu);
+  pSQLMenu: TSQLMenu; pParentNode: PVirtualNode);
+var
+  vMenuDataParent: PvtvMenuRecord;
 begin
   if not Assigned(pSQLMenu) then exit;
 
@@ -666,15 +676,26 @@ begin
   pMenuData^.ID_PARENT := pSQLMenu.IdParent;
   pMenuData^.LONG_TEXT := UTF8ToString(pSQLMenu.LongText);
   pMenuData^.SHORT_TEXT := UTF8ToString(pSQLMenu.ShortText);
-  pMenuData^.NUMERIC_PATH:= UTF8ToString(pSQLMenu.NumericPath);
-  pMenuData^.LEVEL := pSQLMenu.Level;
   pMenuData^.IMPUTABLE := pSQLMenu.Imputable;
-  pMenuData^.CHILD_COUNT := pSQLMenu.ChildCount;
   pMenuData^.SHOW_FORM_MODE := pSQLMenu.ShowFormMode;
   pMenuData^.DESCRIPTION := UTF8ToString(pSQLMenu.Description);
-  pMenuData^.PATH := UTF8ToString(pSQLMenu.TextPath);
   pMenuData^.CLASS_NAME:= UTF8ToString(pSQLMenu.ClassName);
   pMenuData^.ID_IMAGE := pSQLMenu.IdImage;
+
+  if Assigned(pParentNode) then
+  begin
+    vMenuDataParent := vtvMenu.GetNodeData(pParentNode);
+    pMenuData^.LEVEL := vMenuDataParent^.LEVEL + 1;
+    pMenuData^.NUMERIC_PATH := vMenuDataParent^.NUMERIC_PATH + '.' + IntToString(pMenuData^.LEVEL);
+    pMenuData^.PATH := vMenuDataParent^.PATH + '/' + pMenuData^.LONG_TEXT;
+  end
+  else
+  begin
+    pMenuData^.LEVEL := 0;
+    pMenuData^.NUMERIC_PATH := IntToString(pMenuData^.LEVEL);
+    pMenuData^.PATH := '/' + pMenuData^.LONG_TEXT;
+  end;
+
 end;
 
 procedure TCMFmMain.FillMenuTree;
@@ -739,6 +760,7 @@ end;
 procedure TCMFmMain.FillMissingMenuEntries(var pMenuList: TSynDictionary);
 begin
   UCMMenuActions.FillMissingMenuEntries(pMenuList);
+  ConfigApp.CMClient.MenuServices.RebuildNumericPathInMenus;
 end;
 
 procedure TCMFmMain.EndingShow(Sender: TObject);
@@ -751,7 +773,7 @@ end;
 procedure TCMFmMain.RefreshAccordingColorApp;
 begin
   ColorizePanelButtons;
-  vtvMenu.Color := ConfigApp.Color03;
+  vtvMenu.Color := ConfigApp.Color04;
   vtvMenu.Invalidate;
 end;
 
@@ -783,6 +805,18 @@ end;
 procedure TCMFmMain.OnRestoreApplication(Sender: TObject);
 begin
   WindowState := wsNormal;
+end;
+
+procedure TCMFmMain.btMenuClick(Sender: TObject);
+begin
+  pnTree.Visible := not pnTree.Visible;
+  splitterMenu.Visible := pnTree.Visible;
+
+  if self.pnTree.Visible then
+  begin
+    pgMenu.ActivePage := TabMenu;
+    FocusControl(edMenu);
+  end;
 end;
 
 procedure TCMFmMain.btExitClick(Sender: TObject);

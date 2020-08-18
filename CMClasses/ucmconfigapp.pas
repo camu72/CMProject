@@ -52,7 +52,7 @@ type
 
   TCMMenu = class(TObject)
   public
-    function SelectClassToProcess(pIdMenu: integer): TObject;
+    function SelectClassToProcess(pIdMenu: integer; pMenuList: TSynDictionary): TObject;
   end;
 
 
@@ -107,7 +107,7 @@ type
     CMModelClient: TSQLModel;
 
     CMImagesList, CMInactiveImagesList, CMActiveInactiveImagesList: TSynDictionary;
-    Color01,Color02,Color03: TColor;
+    Color01,Color02,Color03,Color04: TColor;
 
     AppFiles: TAppFiles;
     destructor Destroy; override;
@@ -139,7 +139,7 @@ implementation
 
 { TCMMenu }
 
-function TCMMenu.SelectClassToProcess(pIdMenu: integer): TObject;
+function TCMMenu.SelectClassToProcess(pIdMenu: integer; pMenuList: TSynDictionary): TObject;
 begin
   result := nil;
 end;
@@ -183,9 +183,10 @@ begin
   FColorApp := AValue;
 
   FColorApp := MixColors(ColorApp, clWhite, 80);
-  Color01  := MixColors(ColorApp, clWhite, 50);
-  Color02  := MixColors(ColorApp, clWhite, 30);
-  Color03  := MixColors(ColorApp, clWhite, 10);
+  Color01  := MixColors(ColorApp, clWhite, 60);
+  Color02  := MixColors(ColorApp, clWhite, 40);
+  Color03  := MixColors(ColorApp, clWhite, 20);
+  Color04  := MixColors(ColorApp, clWhite, 10);
 
   //ColorizePanelButtons;
   //vtvMenu.Invalidate;
@@ -204,10 +205,13 @@ begin
 
   if pConnectionOK then
   begin
-    CMClient.ServiceDefine([ITransferFileService], {sicClientDriven} sicShared);
+    CMClient.ServiceDefine([ITransferFileService], sicShared);
+    CMClient.ServiceDefine([IMenuServices], sicShared);
 
     if not CMClient.Services['TransferFileService'].Get(CMClient.TransferFileService) then
       ShowMessage('TransferFileService do not exist as service...');
+    if not CMClient.Services['MenuServices'].Get(CMClient.MenuServices) then
+      ShowMessage('MenuServices do not exist as service...');
   end;
 end;
 
@@ -273,6 +277,7 @@ begin
   if Assigned(CMClient) then
   begin
     CMClient.TransferFileService := nil;
+    CMClient.MenuServices := nil;
     CMClient.Free;
   end;
   if Assigned(cMModelClient) then
@@ -517,6 +522,7 @@ begin
       LoadImage(TImgDestello16, 'ImgDestello16.bmp');
       LoadImage(TImgDestello27, 'ImgDestello27.bmp');
       LoadImage(TImgCopiar16, 'ImgCopiar16.bmp');
+      LoadImage(TImgMenu32, 'ImgMenu32.bmp');
     finally
       Free;
     end;

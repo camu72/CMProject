@@ -48,7 +48,7 @@ uses
   SynLog,
   mORMotSQLite3, SynSQLite3Static,
   mORMotHttpServer,
-  UCMModel, UCMCommons;
+  UCMModel, UCMCommons, UCMMormot;
 
 type
   TSQLRestServerCM = class;
@@ -100,6 +100,12 @@ type
     function ListFilesAvailables(out msg: rawUTF8): TFileNameDynArray;
   end;
 
+  { TMenuServices }
+  TMenuServices = class(TInjectableObjectRestCM, IMenuServices)
+  public
+    procedure RebuildNumericPathInMenus;
+  end;
+
   { TSQLRestServerCM }
   TSQLRestServerCM = class(TSQLRestServerDB)
   published
@@ -110,6 +116,35 @@ type
 
 
 implementation
+
+{ TMenuServices }
+
+procedure TMenuServices.RebuildNumericPathInMenus;
+var
+  SQLMenu, SQLMenuAux: TSQLMenu;
+begin
+  SQLMenu := TSQLMenu.CreateAndFillPrepare(Server,'order by IdParent, IdMenu',[]);
+  try
+    while SQLMenu.FillOne do
+    begin
+      if SQLMenu.IdParent = 0 then
+        SQLMenu.NumericPath := IntToString(SQLMenu.IdMenu)
+      else
+      begin
+        SQLMenuAux := TSQLMenu.Create(Server,'IdMenu = ?',[SQLMenu.IdParent]);
+        try
+          SQLMenu.NumericPath := IntToString(SQLMenuAux.IdMenu) + '.' + IntToString(SQLMenu.IdMenu);
+        finally
+          SQLMenuAux.free;
+        end;
+      end;
+
+      Server.Update(SQLMenu);
+    end;
+  finally
+    SQLMenu.Free;
+  end;
+end;
 
 { TSQLRestServerCM }
 procedure TSQLRestServerCM.sum(Ctxt: TSQLRestServerURIContext);
@@ -167,7 +202,8 @@ begin
   { Resitration of services in server }
   //DB.ServiceDefine(TSQLRemoto,[ISQLRemoto],sicClientDriven).
     //SetOptions([], [optExecInMainThread, optFreeInMainThread]);
-  CMServerDB.serviceDefine(TTransferFileService, [ITransferFileService], {sicClientDriven} sicShared);
+  CMServerDB.serviceDefine(TTransferFileService, [ITransferFileService], sicShared);
+  CMServerDB.serviceDefine(TMenuServices, [IMenuServices], sicShared);
 
   CMHttpServer := TSQLHttpServer.Create(vConnServConfig.Port, [CMServerDB], '+', useHttpApiRegisteringURI);
   CMHttpServer.AccessControlAllowOrigin := '*'; // for AJAX requests to work
