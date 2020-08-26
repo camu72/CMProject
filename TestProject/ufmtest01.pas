@@ -9,7 +9,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  Buttons, ExtCtrls, UCMForm, UCMVCL, VirtualTrees, UCMSearcherForm, TypInfo,
+  Buttons, ExtCtrls, UCMForm, ucmlcl, VirtualTrees, UCMSearcherForm, TypInfo,
   UCMConfigApp, UCMModel, SynCommons, UCMFunctions, UCMMormot,
   SynLog, UCMCommons;
 

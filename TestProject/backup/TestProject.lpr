@@ -40,11 +40,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 {$mode objfpc}{$H+}
 
 uses
+  {$DEFINE DEBUG}
   {$I SynDprUses.inc}
   {$IFDEF UNIX}{$IFDEF UseCThreads} cthreads,{$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, UFmMain, UCMConfigApp, UCMCommons,
-  SynCommons, SynLog, UTestConstants, Dialogs;
+  SynCommons, SynLog, UTestConstants, Dialogs, UCMLogin;
 
 {$R *.res}
 {$R CMImages.res}
@@ -98,8 +99,9 @@ begin
       ShowMessage(MsgCanContinue);
       exit;
     end;
-  Application.CreateForm(TFmMain, FmMain);
-  Application.Run;
+
+    Application.CreateForm(TFmMain, FmMain);
+    Application.Run;
   finally
     { ConfigApp release Client and internalSever if exist }
     ConfigApp.Free;

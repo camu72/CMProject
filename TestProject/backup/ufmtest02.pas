@@ -63,6 +63,8 @@ procedure TFmTest02.ProcessingCreate(Sender: TObject);
 begin
   inherited ProcessingCreate(Sender);
   ImgColor := TImageColorable.Create(Image1);
+
+  //ColorizeTImage(Image1);
 end;
 
 procedure TFmTest02.EndingDestroy(Sender: TObject);

@@ -44,7 +44,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
   ComCtrls, StdCtrls, Menus,
   SynCommons, VirtualTrees, UCMMenuActions, UCMModel, UCMFunctions, UCMMormot,
-  UCMForm, UCMConfigApp, UCMCommons, UCMVCL, UCMVTV, UCMFMAbout;
+  UCMForm, UCMConfigApp, UCMCommons, ucmlcl, UCMVTV, UCMFMAbout;
 type
 
   { TCMFmMain }
@@ -78,6 +78,7 @@ type
     procedure btInfoClick(Sender: TObject);
     procedure edMenuChange(Sender: TObject);
     procedure edMenuKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure pnEditMenuClick(Sender: TObject);
     procedure pnMenuResize(Sender: TObject);
     procedure vtvMenuBeforeItemErase(Sender: TBaseVirtualTree;
       TargetCanvas: TCanvas; Node: PVirtualNode; const ItemRect: TRect;
@@ -107,11 +108,11 @@ type
     function FocusPageIfItExists(pMenuRecord: PvtvMenuRecord; pFormInitParam: TCMFormInitParam): boolean;
     procedure ConfigurePageOnFocus(pFocusedFm: TCMForm; pFormInitParam: TCMFormInitParam);
   protected
+    ImgLeftMenuSpace: TImageColorable;
     IdxRoot, IdxMenu, IdxGreenLigth: Integer;
     ImgsListMenu: TCMImageListManager;
     SQLMenu: TSQLMenu;
     MenuDataAux: PvtvMenuRecord;
-    procedure ColorizePanelButtons;
     procedure AssignImages; override;
     procedure EndingDestroy(Sender: TObject); override;
     procedure ProcessingCreate(Sender: TObject); override;
@@ -183,52 +184,14 @@ begin
   end;
 end;
 
-procedure TCMFmMain.pnMenuResize(Sender: TObject);
+procedure TCMFmMain.pnEditMenuClick(Sender: TObject);
 begin
-  ColorizePanelButtons;
+
 end;
 
-procedure TCMFmMain.ColorizePanelButtons;
-var
-  auxBitmap: TBitmap;
-  x,y, Porc: integer;
-  auxDelta, Delta, IncPorc: Double;
-  auxColor: TColor;
+procedure TCMFmMain.pnMenuResize(Sender: TObject);
 begin
-
   ImgPanelButtons.Width := pnMenu.Width - (pnInfoApp.Left + pnInfoApp.Width) - pnMenu.BorderWidth * 2;
-
-
-  auxBitmap := TBitmap.Create;
-  auxBitmap.Width := ImgPanelButtons.Width;
-  auxBitmap.Height := ImgPanelButtons.Height;
-
-  Delta := ImgPanelButtons.Width / 100;
-  if Delta < 1 then
-    IncPorc := 100 / ImgPanelButtons.Width
-  else
-    IncPorc := 1;
-
-  auxDelta := 0;
-
-  Porc := 0;
-  auxDelta := 0;
-  for x := 0 to auxBitmap.Width do
-  begin
-    if X >= auxDelta then
-    begin
-      auxDelta := auxDelta + Delta;
-      Porc := Porc + round(IncPorc);
-      auxColor := MixColors(ConfigApp.Color01, clBtnFace, Porc);
-    end;
-    for y := 0 to auxBitmap.Height do
-    begin
-      auxBitmap.Canvas.DrawPixel(x,y,TColorToFPColor(auxColor));
-    end;
-  end;
-
-  ImgPanelButtons.Picture.Assign(auxBitmap);
-  auxBitmap.Free;;
 end;
 
 procedure TCMFmMain.vtvMenuBeforeItemErase(Sender: TBaseVirtualTree;
@@ -362,7 +325,7 @@ begin
   if Assigned(MenuData) then
     case Column of
       0: CellText := MenuData^.LONG_TEXT;
-      1: Celltext := '';// BoolToStr(MenuData^.IMPUTABLE);
+      1: Celltext := '';
     end
 end;
 
@@ -586,6 +549,7 @@ begin
   pgMain.Free;
   ImgsListMenu.Free;
   MenuList.free;
+  ImgLeftMenuSpace.Free;
   inherited EndingDestroy(Sender);
 end;
 
@@ -605,10 +569,10 @@ begin
   maximize, restore, mimimize....}
   Application.OnRestore := @OnRestoreApplication;
 
-  { Define the Color Application... }
-  ConfigApp.ColorApp := MixColors(clRed,clYellow,70);
-  //ConfigApp.ColorApp := MixColors(clGreen,clBlue,70);
-  //ConfigApp.ColorApp := MixColors(clGreen,clYellow,70);
+  //{ Define the Color Application... }
+  //ConfigApp.ColorApp := MixColors(clRed,clYellow,70);
+  ////ConfigApp.ColorApp := MixColors(clGreen,clBlue,70);
+  ////ConfigApp.ColorApp := MixColors(clGreen,clYellow,70);
 
   case ConfigApp.ExecutionMode of
     emClient:
@@ -650,6 +614,8 @@ begin
   vtvMenu.Color := ConfigApp.Color04;
   vtvMenu.NodeDataSize := SizeOf(TvtvMenuRecord);
   vtvMenu.RootNodeCount := 0;
+
+  ImgLeftMenuSpace := TImageColorable.create(ImgPanelButtons);
 end;
 
 procedure TCMFmMain.GetNewMenuRecord(var MenuData: PvtvMenuRecord; pIdMenu: integer);
@@ -731,7 +697,7 @@ begin
   vRootNode := nil;
   vtvMenu.Clear;
 
-  SQLMenu := TSQLMenu.CreateAndFillPrepare(Client,'(IdMenu >= 0) order by IdMenu',[]);
+  SQLMenu := TSQLMenu.CreateAndFillPrepare(Client,'(IdMenu >= 0) order by NumericPath',[]);
   try
     while SQLMenu.FillOne do
     begin
@@ -772,7 +738,7 @@ end;
 
 procedure TCMFmMain.RefreshAccordingColorApp;
 begin
-  ColorizePanelButtons;
+  ImgLeftMenuSpace.Recolor;
   vtvMenu.Color := ConfigApp.Color04;
   vtvMenu.Invalidate;
 end;

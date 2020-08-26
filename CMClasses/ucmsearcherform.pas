@@ -42,7 +42,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  StdCtrls, UCMForm, VirtualTrees, UCMVTV, UCMVCL, ucmconfigapp,
+  StdCtrls, UCMForm, VirtualTrees, UCMVTV, ucmlcl, ucmconfigapp,
   UCMCommons,  Windows, SynCommons, mORMot;
 
 type

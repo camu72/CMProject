@@ -1,11 +1,26 @@
 inherited FmTest02: TFmTest02
-  Left = 413
-  Top = 192
+  Left = 423
+  Top = 261
   OnClose = nil
   object Shape1: TShape[0]
-    Left = 154
+    Left = 32
     Height = 136
-    Top = 82
+    Top = 168
     Width = 129
+  end
+  object BitBtn1: TBitBtn[1]
+    Left = 337
+    Height = 30
+    Top = 212
+    Width = 75
+    Caption = 'BitBtn1'
+    OnClick = BitBtn1Click
+    TabOrder = 0
+  end
+  object Image1: TImage[2]
+    Left = 197
+    Height = 170
+    Top = 26
+    Width = 90
   end
 end

@@ -1,4 +1,4 @@
-unit UCMVCL;
+unit UCMLCL;
 
 (*
 *** BEGIN LICENSE BLOCK *****
@@ -43,7 +43,7 @@ interface
 uses
   Classes, SysUtils, ComCtrls, Controls, Graphics, Forms, StdCtrls,
   LCLType, LCLIntf, SynCommons, ExtCtrls, Dialogs, Buttons,
-  UCMCommons, UCMConfigApp, SynLog;
+  UCMCommons, UCMConfigApp, SynLog, UCMFunctions;
 
 type
 
@@ -181,13 +181,72 @@ type
       read FOnAllowEscapeKey write FOnAllowEscapeKey;
   end;
 
+  { TImageColorable }
+
+  TonColorizeImage = procedure(pImage: TImage) of object;
+  TImageColorable = class(TObject)
+    PreviousImageResize: TNotifyEvent;
+    procedure InternalImage1Resize(Sender: TObject);
+  private
+    FOnColorizeImage: TonColorizeImage;
+  protected
+    procedure ColorizeImage;
+  public
+    Image: TImage;
+    constructor create(pImage: TImage);
+    procedure Recolor;
+    property OnColorizeImage: TonColorizeImage read FOnColorizeImage write FOnColorizeImage;
+  end;
+
 procedure FocusControl(pControl: TWinControl);
 procedure CtrlReadOnly(pControl: TWinControl; pReadOnly: boolean); overload;
+procedure ColorizeTImage(pImage: TImage);
 
 implementation
 
 uses
   UCMForm;
+
+procedure ColorizeTImage(pImage: TImage);
+var
+  auxBitmap: TBitmap;
+  x,y, Porc: integer;
+  auxDelta, Delta, IncPorc: Double;
+  auxColor: TColor;
+begin
+  auxBitmap := TBitmap.Create;
+  auxBitmap.Width := pImage.Width;
+  auxBitmap.Height := pImage.Height;
+
+  if (pImage.Width * pImage.Height) = 0 then exit;
+
+  Delta := pImage.Width / 100;
+  if Delta < 1 then
+    IncPorc := 100 / pImage.Width
+  else
+    IncPorc := 1;
+
+  auxDelta := 0;
+
+  Porc := 0;
+  auxDelta := 0;
+  for x := 0 to pImage.Width do
+  begin
+    if X >= auxDelta then
+    begin
+      auxDelta := auxDelta + Delta;
+      Porc := Porc + round(IncPorc);
+      auxColor := MixColors(ConfigApp.Color01, pImage.Parent.Brush.Color, Porc);
+    end;
+    for y := 0 to auxBitmap.Height do
+    begin
+      auxBitmap.Canvas.DrawPixel(x,y,TColorToFPColor(auxColor));
+    end;
+  end;
+
+  pImage.Picture.Assign(auxBitmap);
+  auxBitmap.Free;
+end;
 
 procedure FocusControl(pControl: TWinControl);
 var
@@ -305,6 +364,36 @@ begin
     Showmessage(pControl.ClassName + ' isn''t not available in the CtrlReadOnly function');
   end;
 
+end;
+
+{ TImageColorable }
+
+procedure TImageColorable.InternalImage1Resize(Sender: TObject);
+begin
+  if Assigned(PreviousImageResize) then
+    PreviousImageResize(Sender);
+  ColorizeImage;
+end;
+
+procedure TImageColorable.ColorizeImage;
+begin
+  ColorizeTImage(Image);
+  if Assigned(OnColorizeImage) then
+    OnColorizeImage(Image);
+end;
+
+constructor TImageColorable.create(pImage: TImage);
+begin
+  Image := pImage;
+  FOnColorizeImage := nil;
+  ColorizeImage;
+  PreviousImageResize := Image.OnResize;
+  Image.OnResize := @InternalImage1Resize;
+end;
+
+procedure TImageColorable.Recolor;
+begin
+  ColorizeImage;
 end;
 
 { TCMEditBtCancel }
@@ -849,7 +938,7 @@ begin
   inherited Create(TheOwner);
   FixedTab := False;
   IdxInFormsList := -1;
-  Caption := 'Uno...';
+  Caption := 'One...';
 end;
 
 { TPageControlCM }

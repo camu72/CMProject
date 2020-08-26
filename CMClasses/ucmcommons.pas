@@ -100,7 +100,7 @@ type
     TImgLuzNula14, TImgLuzGris14, TImgLuzAmarilla14, TImgLuzVerde14,
     TImgLuzRoja14, TImgLuzAzul14,
     TImgDestello16, TImgDestello27,
-    TImgCopiar16);
+    TImgCopiar16, TImgKey32);
   { See de unit UCMConfigApp to load the Images }
 
   { TCMSynPersistent }

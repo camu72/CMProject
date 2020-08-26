@@ -20,7 +20,6 @@ inherited CMFmMain: TCMFmMain
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 1
-    Color = clBtnFace
     ControlList = <    
       item
         Control = btMenu
@@ -266,6 +265,7 @@ inherited CMFmMain: TCMFmMain
           ClientHeight = 31
           ClientWidth = 229
           TabOrder = 1
+          OnClick = pnEditMenuClick
           object edMenu: TEdit
             Left = 1
             Height = 23

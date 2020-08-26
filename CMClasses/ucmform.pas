@@ -43,7 +43,7 @@ interface
 uses
   {Windows, ExtCtrls, stdCtrls,}
   Forms, Controls,Graphics, Dialogs, SysUtils,
-  UCMVCL, SynCommons, mORMot, SynLog,  UCMConfigApp,
+  ucmlcl, SynCommons, mORMot, SynLog,  UCMConfigApp,
   UCMMormot, Classes;
 
 type

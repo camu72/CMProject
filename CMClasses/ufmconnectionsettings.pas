@@ -105,6 +105,9 @@ uses
 { TFmConnectionSettings }
 
 procedure TFmConnectionSettings.btConnectClick(Sender: TObject);
+var
+  vAuthenticatedUserOK: boolean;
+  vMsgRecreate: string;
 begin
   case TConfigApp(InternalConfigApp).ExecutionMode of
     emClient:
@@ -113,7 +116,7 @@ begin
         ConfiguratedConnectionOK := False;
 
         { Recreate CMClient with new configuration }
-        TConfigApp(InternalConfigApp).RecreateClient(ConnectionConfig, ConfiguratedConnectionOK);
+        TConfigApp(InternalConfigApp).RecreateClient(ConnectionConfig, ConfiguratedConnectionOK, vAuthenticatedUserOK, vMsgRecreate);
 
         if not ConfiguratedConnectionOK then
         begin

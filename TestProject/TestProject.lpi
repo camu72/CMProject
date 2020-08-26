@@ -107,7 +107,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="20">
+    <Units Count="21">
       <Unit0>
         <Filename Value="TestProject.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -126,9 +126,9 @@
         <UnitName Value="UCMFunctions"/>
       </Unit2>
       <Unit3>
-        <Filename Value="..\CMClasses\ucmvcl.pas"/>
+        <Filename Value="..\CMClasses\ucmlcl.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="UCMVCL"/>
+        <UnitName Value="UCMLCL"/>
       </Unit3>
       <Unit4>
         <Filename Value="ufmtest01.pas"/>
@@ -231,6 +231,14 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UCMCommons"/>
       </Unit19>
+      <Unit20>
+        <Filename Value="..\CMClasses\ucmfmlogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CMFMLogin"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UCMFMLogin"/>
+      </Unit20>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -252,9 +260,14 @@
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <OtherDefines Count="1">
+        <Define0 Value="DEBUG"/>
+      </OtherDefines>
+    </Other>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="5">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -264,6 +277,12 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="ERangeError"/>
+      </Item4>
+      <Item5>
+        <Name Value="RunError(201)"/>
+      </Item5>
     </Exceptions>
   </Debugging>
 </CONFIG>

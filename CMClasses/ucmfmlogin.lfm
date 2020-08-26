@@ -1,0 +1,111 @@
+inherited CMFMLogin: TCMFMLogin
+  Left = 549
+  Height = 222
+  Top = 311
+  Width = 375
+  BorderStyle = bsDialog
+  Caption = 'Login'
+  ClientHeight = 222
+  ClientWidth = 375
+  object pnHeader: TPanel[0]
+    Left = 0
+    Height = 58
+    Top = 0
+    Width = 375
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 58
+    ClientWidth = 375
+    TabOrder = 0
+    object Bevel1: TBevel
+      Left = 0
+      Height = 2
+      Top = 56
+      Width = 375
+      Align = alBottom
+      Shape = bsBottomLine
+    end
+    object ImgHeader: TImage
+      Left = 0
+      Height = 56
+      Top = 0
+      Width = 375
+      AntialiasingMode = amOn
+      Align = alClient
+    end
+  end
+  object btAcept: TBitBtn[1]
+    Left = 88
+    Height = 30
+    Top = 175
+    Width = 100
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = '&Acept'
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object btCancel: TBitBtn[2]
+    Left = 196
+    Height = 30
+    Top = 175
+    Width = 100
+    Anchors = [akLeft, akRight, akBottom]
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    OnClick = btCancelClick
+    TabOrder = 4
+  end
+  object lbUser: TLabel[3]
+    Left = 31
+    Height = 15
+    Top = 98
+    Width = 100
+    AutoSize = False
+    Caption = 'User name ..........................'
+    ParentColor = False
+  end
+  object lbPassword: TLabel[4]
+    Left = 31
+    Height = 15
+    Top = 130
+    Width = 100
+    AutoSize = False
+    Caption = 'Password ..................'
+    ParentColor = False
+  end
+  object edUserName: TEdit[5]
+    Left = 138
+    Height = 23
+    Top = 96
+    Width = 200
+    TabOrder = 1
+  end
+  object edPassword: TEdit[6]
+    Left = 138
+    Height = 23
+    Top = 128
+    Width = 200
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 2
+  end
+  object lbHelp: TLabel[7]
+    Left = 31
+    Height = 15
+    Top = 66
+    Width = 306
+    Alignment = taCenter
+    Anchors = [akLeft]
+    AutoSize = False
+    Caption = 'Login process'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+end

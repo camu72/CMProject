@@ -44,7 +44,7 @@ uses
   {$IFDEF UNIX}{$IFDEF UseCThreads} cthreads,{$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, UFmMain, UCMConfigApp, UCMCommons,
-  SynCommons, SynLog, UTestConstants, Dialogs;
+  SynCommons, SynLog, UTestConstants, Dialogs, UCMFMLogin;
 
 {$R *.res}
 {$R CMImages.res}

@@ -41,7 +41,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 interface
 
 uses
-  Classes, SysUtils, Graphics, Dialogs, SynDB,
+  Classes, SysUtils, Graphics, Dialogs, {SynDB,}
   UCMServer, UCMMormot, UCMModel, UFMConnectionSettings, UCMInterfaces,
   UCMCommons, SynCommons, mORMot, SynZip, UCMFunctions;
 
@@ -121,7 +121,8 @@ type
     function GetCMImageActiveInactive(pTCMImage: TCMImage): TBitmap;
 
     function CanContinue(var MsgCanContinue: ansistring): boolean;
-    procedure RecreateClient(pConnConfig: TConnectionConfig; var pConnectionOK: boolean);
+    procedure RecreateClient(pConnConfig: TConnectionConfig; var pConnectionOK,
+      pAuthenticatedUserOK: boolean; var pMsgCanContinue: string);
     property AppNameVersionRelease: string read GetAppNameVersionRelease;
 
     property ColorApp: TColor read FColorApp write setColorApp;
@@ -136,6 +137,9 @@ var
   ConfigApp: TConfigApp;
 
 implementation
+
+uses
+  UCMFMLogin;
 
 { TCMMenu }
 
@@ -193,17 +197,40 @@ begin
 end;
 
 procedure TConfigApp.RecreateClient(pConnConfig: TConnectionConfig;
-  var pConnectionOK: boolean);
+  var pConnectionOK, pAuthenticatedUserOK: boolean; var pMsgCanContinue: string);
+var
+  vUser, vPassword: string;
 begin
+  pAuthenticatedUserOK := False;
+
   if Assigned(CMClient) then
     FreeAndNil(CMClient);
-
   CMClient := TSQLHttpClientCM.Create(pConnConfig.ServerName,
     pConnConfig.Port, CMModelClient);
 
   pConnectionOK := CMClient.ServerTimestampSynchronize;
 
   if pConnectionOK then
+  begin
+    vUser := 'User';
+    //vPassword := 'synopse';
+    vPassword := '';
+    if TCMFMLogin.Login('Login','Input user and password', vUser, vPassword, true) then
+    begin
+      pAuthenticatedUserOK := CMClient.SetUser(vUser, vPassword);
+      if pAuthenticatedUserOK then
+        pMsgCanContinue := pMsgCanContinue + LineEnding + 'OK - Client connected'
+      else
+        pMsgCanContinue := pMsgCanContinue + LineEnding + 'Fail - User or password incorrect';
+      end
+    else
+    begin
+      pAuthenticatedUserOK := False;
+      pMsgCanContinue := pMsgCanContinue + LineEnding + 'Fail - Login canceled';
+    end;
+  end;
+
+  if pConnectionOK and pAuthenticatedUserOK then
   begin
     CMClient.ServiceDefine([ITransferFileService], sicShared);
     CMClient.ServiceDefine([IMenuServices], sicShared);
@@ -219,24 +246,22 @@ procedure TConfigApp.CreateClient(pConnConfig: TConnectionConfig;
   var pCanContinue: boolean; var pMsgCanContinue: ansistring);
 var
   auxMsgConnection: ansistring;
-  ConnectionOK: boolean;
+  ConnectionOK, AuthorizedUserOK: boolean;
+  vUser, vPassword: string;
 begin
   CMModelClient := CreateModel;
-  RecreateClient(pConnConfig, ConnectionOK);
+  RecreateClient(pConnConfig, ConnectionOK, AuthorizedUserOK, pMsgCanContinue);
 
-  if ConnectionOK then
-  begin
-    CMClient.SetUser('User', 'synopse');
-    pCanContinue := True;
-    pMsgCanContinue := pMsgCanContinue + LineEnding + 'OK - Client connected';
-  end
-  else
-  begin
-    pCanContinue := TFmConnectionSettings.ConfinguratedConnection(
-      auxMsgConnection, Self);
-    pMsgCanContinue := pMsgCanContinue + LineEnding + auxMsgConnection;
-    pConnConfig.Save;
-  end;
+  pCanContinue := ConnectionOK and AuthorizedUserOK;
+
+  if not pCanContinue then
+    if not ConnectionOK then
+    begin
+      pCanContinue := TFmConnectionSettings.ConfinguratedConnection(
+        auxMsgConnection, Self);
+      pMsgCanContinue := pMsgCanContinue + LineEnding + auxMsgConnection;
+      pConnConfig.Save;
+    end;
 end;
 
 procedure TConfigApp.CreateInternalService(pConnServConf: TConnectionServiceConfig;
@@ -323,6 +348,13 @@ begin
   CMActiveInactiveImagesList :=
     TSynDictionary.Create(TypeInfo(TIntegerDynArray), TypeInfo(TBitmapObjArray));
   LoadCMImagesList;
+
+
+  { Define the Color Application... }
+  //ColorApp := MixColors(clRed,clYellow,70);
+  ColorApp := MixColors(clGreen,clBlue,70);
+  //ColorApp := MixColors(clGreen,clYellow,70);
+
 
   ExecutionMode := pExecutionMode;
 end;
@@ -523,6 +555,7 @@ begin
       LoadImage(TImgDestello27, 'ImgDestello27.bmp');
       LoadImage(TImgCopiar16, 'ImgCopiar16.bmp');
       LoadImage(TImgMenu32, 'ImgMenu32.bmp');
+      LoadImage(TImgKey32, 'ImgKey32.bmp');
     finally
       Free;
     end;

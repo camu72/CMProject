@@ -83,9 +83,7 @@ type
 
     // release memory
     destructor Destroy; override;
-
   end;
-
 
   { TInjectableObjectRestCM }
   TInjectableObjectRestCM = class(TInjectableObjectRest)
@@ -192,7 +190,7 @@ begin
   if not Continue then exit;
 
   CMModelServer := CreateModel;
-  CMServerDB := TSQLRestServerCM.Create(CMModelServer, vConnServConfig.DBNameWithPath);
+  CMServerDB := TSQLRestServerCM.Create(CMModelServer, vConnServConfig.DBNameWithPath,True);
   { Assign to Server, the ConnectionServiceConfig, where is defined some variables
   for the correct use for some services. See UpdatableFilesFolder in GetFile services }
   CMServerDB.ConnectionServiceConfig := vConnServConfig;
